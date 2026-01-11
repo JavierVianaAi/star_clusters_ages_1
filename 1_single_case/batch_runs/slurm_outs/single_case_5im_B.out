@@ -1,0 +1,291 @@
+14:48:17
+2025-03-18 14:48:18.955607: E external/local_xla/xla/stream_executor/cuda/cuda_dnn.cc:9261] Unable to register cuDNN factory: Attempting to register factory for plugin cuDNN when one has already been registered
+2025-03-18 14:48:18.955654: E external/local_xla/xla/stream_executor/cuda/cuda_fft.cc:607] Unable to register cuFFT factory: Attempting to register factory for plugin cuFFT when one has already been registered
+2025-03-18 14:48:18.956480: E external/local_xla/xla/stream_executor/cuda/cuda_blas.cc:1515] Unable to register cuBLAS factory: Attempting to register factory for plugin cuBLAS when one has already been registered
+2025-03-18 14:48:18.961133: I tensorflow/core/platform/cpu_feature_guard.cc:182] This TensorFlow binary is optimized to use available CPU instructions in performance-critical operations.
+To enable the following instructions: SSE4.1 SSE4.2 AVX AVX2 FMA, in other operations, rebuild TensorFlow with the appropriate compiler flags.
+2025-03-18 14:49:43.623589: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1929] Created device /job:localhost/replica:0/task:0/device:GPU:0 with 79077 MB memory:  -> device: 0, name: NVIDIA A100-SXM4-80GB, pci bus id: 0000:01:00.0, compute capability: 8.0
+
+
+--------------------------------------
+SINGLE -------------------------------
+5-im case ----------------------------
+
+Params:
+
+flag_remove_extremes:  False
+flag_use_augmented:  False
+
+flag_black:  True
+
+flag_black_inner:  True
+R:  6
+
+Normalization by
+five-images
+
+arr_learn_rates:  [1e-06, 1e-07]
+arr_epochs:  [100, 10]
+batch_size:  16
+patience:  30
+
+--------------------------------------
+
+
+X.shape:  (8651, 5, 112, 112)
+
+Shape of X_tr: (6055, 5, 112, 112)
+Shape of X_vl: (1298, 5, 112, 112)
+Shape of X_ts: (1298, 5, 112, 112)
+
+Shape of Y_tr: (6055,)
+Shape of Y_vl: (1298,)
+Shape of Y_ts: (1298,)
+
+Shape of use_X_tr: (6055, 112, 112, 5)
+Shape of use_X_vl: (1298, 112, 112, 5)
+Shape of use_X_ts: (1298, 112, 112, 5)
+
+Shape of use_Y_tr: (6055,)
+Shape of use_Y_vl: (1298,)
+Shape of use_Y_ts: (1298,)
+
+nrm_X_tr.shape
+(6055, 112, 112, 5)
+
+nrm_X_tr.shape
+(6055, 112, 112, 5)
+
+
+MODEL 0
+
+Model: "sequential"
+_________________________________________________________________
+ Layer (type)                Output Shape              Param #   
+=================================================================
+ conv2d (Conv2D)             (None, 110, 110, 128)     5888      
+                                                                 
+ max_pooling2d (MaxPooling2  (None, 55, 55, 128)       0         
+ D)                                                              
+                                                                 
+ conv2d_1 (Conv2D)           (None, 53, 53, 256)       295168    
+                                                                 
+ max_pooling2d_1 (MaxPoolin  (None, 26, 26, 256)       0         
+ g2D)                                                            
+                                                                 
+ max_pooling2d_2 (MaxPoolin  (None, 13, 13, 256)       0         
+ g2D)                                                            
+                                                                 
+ conv2d_2 (Conv2D)           (None, 11, 11, 512)       1180160   
+                                                                 
+ flatten (Flatten)           (None, 61952)             0         
+                                                                 
+ dense (Dense)               (None, 512)               31719936  
+                                                                 
+ dense_1 (Dense)             (None, 256)               131328    
+                                                                 
+ dense_2 (Dense)             (None, 128)               32896     
+                                                                 
+ dense_3 (Dense)             (None, 1)                 129       
+                                                                 
+=================================================================
+Total params: 33365505 (127.28 MB)
+Trainable params: 33365505 (127.28 MB)
+Non-trainable params: 0 (0.00 Byte)
+_________________________________________________________________
+2025-03-18 14:49:45.512264: I external/local_xla/xla/stream_executor/cuda/cuda_dnn.cc:454] Loaded cuDNN version 8907
+2025-03-18 14:49:46.436634: I external/local_xla/xla/service/service.cc:168] XLA service 0x149565a30be0 initialized for platform CUDA (this does not guarantee that XLA will be used). Devices:
+2025-03-18 14:49:46.436679: I external/local_xla/xla/service/service.cc:176]   StreamExecutor device (0): NVIDIA A100-SXM4-80GB, Compute Capability 8.0
+2025-03-18 14:49:46.441275: I tensorflow/compiler/mlir/tensorflow/utils/dump_mlir_util.cc:269] disabling MLIR crash reproducer, set env var `MLIR_CRASH_REPRODUCER_DIRECTORY` to enable.
+WARNING: All log messages before absl::InitializeLog() is called are written to STDERR
+I0000 00:00:1742323786.515447 1668183 device_compiler.h:186] Compiled cluster using XLA!  This line is logged at most once for the lifetime of the process.
+Training Finished
+
+Tr. Final MSE (nrm. units): 0.027233147993683815
+Vl. Final MSE (nrm. units): 0.03605662286281586
+Ts. Final MSE (nrm. units): 0.03440190851688385
+Tr. Final MdAE (dnrm. units): 0.6804735374450683
+Vl. Final MdAE (dnrm. units): 0.8097058606147766
+Ts. Final MdAE (dnrm. units): 0.8038443398475646
+
+MODEL 1
+
+Model: "sequential_1"
+_________________________________________________________________
+ Layer (type)                Output Shape              Param #   
+=================================================================
+ conv2d_3 (Conv2D)           (None, 110, 110, 128)     5888      
+                                                                 
+ max_pooling2d_3 (MaxPoolin  (None, 55, 55, 128)       0         
+ g2D)                                                            
+                                                                 
+ conv2d_4 (Conv2D)           (None, 53, 53, 256)       295168    
+                                                                 
+ max_pooling2d_4 (MaxPoolin  (None, 26, 26, 256)       0         
+ g2D)                                                            
+                                                                 
+ max_pooling2d_5 (MaxPoolin  (None, 13, 13, 256)       0         
+ g2D)                                                            
+                                                                 
+ conv2d_5 (Conv2D)           (None, 11, 11, 512)       1180160   
+                                                                 
+ flatten_1 (Flatten)         (None, 61952)             0         
+                                                                 
+ dense_4 (Dense)             (None, 512)               31719936  
+                                                                 
+ dense_5 (Dense)             (None, 256)               131328    
+                                                                 
+ dense_6 (Dense)             (None, 128)               32896     
+                                                                 
+ dense_7 (Dense)             (None, 1)                 129       
+                                                                 
+=================================================================
+Total params: 33365505 (127.28 MB)
+Trainable params: 33365505 (127.28 MB)
+Non-trainable params: 0 (0.00 Byte)
+_________________________________________________________________
+Training Finished
+
+Tr. Final MSE (nrm. units): 0.025448838248848915
+Vl. Final MSE (nrm. units): 0.03528008610010147
+Ts. Final MSE (nrm. units): 0.034084197133779526
+Tr. Final MdAE (dnrm. units): 0.6554608297348022
+Vl. Final MdAE (dnrm. units): 0.7893443584442139
+Ts. Final MdAE (dnrm. units): 0.7653419637680053
+
+MODEL 2
+
+Model: "sequential_2"
+_________________________________________________________________
+ Layer (type)                Output Shape              Param #   
+=================================================================
+ conv2d_6 (Conv2D)           (None, 110, 110, 128)     5888      
+                                                                 
+ max_pooling2d_6 (MaxPoolin  (None, 55, 55, 128)       0         
+ g2D)                                                            
+                                                                 
+ conv2d_7 (Conv2D)           (None, 53, 53, 256)       295168    
+                                                                 
+ max_pooling2d_7 (MaxPoolin  (None, 26, 26, 256)       0         
+ g2D)                                                            
+                                                                 
+ max_pooling2d_8 (MaxPoolin  (None, 13, 13, 256)       0         
+ g2D)                                                            
+                                                                 
+ conv2d_8 (Conv2D)           (None, 11, 11, 512)       1180160   
+                                                                 
+ flatten_2 (Flatten)         (None, 61952)             0         
+                                                                 
+ dense_8 (Dense)             (None, 512)               31719936  
+                                                                 
+ dense_9 (Dense)             (None, 256)               131328    
+                                                                 
+ dense_10 (Dense)            (None, 128)               32896     
+                                                                 
+ dense_11 (Dense)            (None, 1)                 129       
+                                                                 
+=================================================================
+Total params: 33365505 (127.28 MB)
+Trainable params: 33365505 (127.28 MB)
+Non-trainable params: 0 (0.00 Byte)
+_________________________________________________________________
+Training Finished
+
+Tr. Final MSE (nrm. units): 0.024762500077486038
+Vl. Final MSE (nrm. units): 0.03568148612976074
+Ts. Final MSE (nrm. units): 0.033807288855314255
+Tr. Final MdAE (dnrm. units): 0.6417128992080688
+Vl. Final MdAE (dnrm. units): 0.7880729413032531
+Ts. Final MdAE (dnrm. units): 0.7700784277915954
+
+MODEL 3
+
+Model: "sequential_3"
+_________________________________________________________________
+ Layer (type)                Output Shape              Param #   
+=================================================================
+ conv2d_9 (Conv2D)           (None, 110, 110, 128)     5888      
+                                                                 
+ max_pooling2d_9 (MaxPoolin  (None, 55, 55, 128)       0         
+ g2D)                                                            
+                                                                 
+ conv2d_10 (Conv2D)          (None, 53, 53, 256)       295168    
+                                                                 
+ max_pooling2d_10 (MaxPooli  (None, 26, 26, 256)       0         
+ ng2D)                                                           
+                                                                 
+ max_pooling2d_11 (MaxPooli  (None, 13, 13, 256)       0         
+ ng2D)                                                           
+                                                                 
+ conv2d_11 (Conv2D)          (None, 11, 11, 512)       1180160   
+                                                                 
+ flatten_3 (Flatten)         (None, 61952)             0         
+                                                                 
+ dense_12 (Dense)            (None, 512)               31719936  
+                                                                 
+ dense_13 (Dense)            (None, 256)               131328    
+                                                                 
+ dense_14 (Dense)            (None, 128)               32896     
+                                                                 
+ dense_15 (Dense)            (None, 1)                 129       
+                                                                 
+=================================================================
+Total params: 33365505 (127.28 MB)
+Trainable params: 33365505 (127.28 MB)
+Non-trainable params: 0 (0.00 Byte)
+_________________________________________________________________
+/home/vianajr/cluster_ages_1/1_single_case/batch_runs/single_case_5im_B.py:411: RuntimeWarning: More than 20 figures have been opened. Figures created through the pyplot interface (`matplotlib.pyplot.figure`) are retained until explicitly closed and may consume too much memory. (To control this warning, see the rcParam `figure.max_open_warning`). Consider using `matplotlib.pyplot.close()`.
+  plt.figure(figsize=(10, 6))
+Training Finished
+
+Tr. Final MSE (nrm. units): 0.02502252347767353
+Vl. Final MSE (nrm. units): 0.03546430543065071
+Ts. Final MSE (nrm. units): 0.03385765850543976
+Tr. Final MdAE (dnrm. units): 0.6540149879455567
+Vl. Final MdAE (dnrm. units): 0.8212328076362609
+Ts. Final MdAE (dnrm. units): 0.7908385133743286
+
+MODEL 4
+
+Model: "sequential_4"
+_________________________________________________________________
+ Layer (type)                Output Shape              Param #   
+=================================================================
+ conv2d_12 (Conv2D)          (None, 110, 110, 128)     5888      
+                                                                 
+ max_pooling2d_12 (MaxPooli  (None, 55, 55, 128)       0         
+ ng2D)                                                           
+                                                                 
+ conv2d_13 (Conv2D)          (None, 53, 53, 256)       295168    
+                                                                 
+ max_pooling2d_13 (MaxPooli  (None, 26, 26, 256)       0         
+ ng2D)                                                           
+                                                                 
+ max_pooling2d_14 (MaxPooli  (None, 13, 13, 256)       0         
+ ng2D)                                                           
+                                                                 
+ conv2d_14 (Conv2D)          (None, 11, 11, 512)       1180160   
+                                                                 
+ flatten_4 (Flatten)         (None, 61952)             0         
+                                                                 
+ dense_16 (Dense)            (None, 512)               31719936  
+                                                                 
+ dense_17 (Dense)            (None, 256)               131328    
+                                                                 
+ dense_18 (Dense)            (None, 128)               32896     
+                                                                 
+ dense_19 (Dense)            (None, 1)                 129       
+                                                                 
+=================================================================
+Total params: 33365505 (127.28 MB)
+Trainable params: 33365505 (127.28 MB)
+Non-trainable params: 0 (0.00 Byte)
+_________________________________________________________________
+Training Finished
+
+Tr. Final MSE (nrm. units): 0.026144588366150856
+Vl. Final MSE (nrm. units): 0.0362175814807415
+Ts. Final MSE (nrm. units): 0.03479272872209549
+Tr. Final MdAE (dnrm. units): 0.6776230621337891
+Vl. Final MdAE (dnrm. units): 0.8265454769134521
+Ts. Final MdAE (dnrm. units): 0.7950794124603271

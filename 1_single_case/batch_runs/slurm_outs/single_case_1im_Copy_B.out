@@ -1,0 +1,121 @@
+09:54:07
+2025-08-12 09:54:09.900659: E external/local_xla/xla/stream_executor/cuda/cuda_dnn.cc:9261] Unable to register cuDNN factory: Attempting to register factory for plugin cuDNN when one has already been registered
+2025-08-12 09:54:09.900745: E external/local_xla/xla/stream_executor/cuda/cuda_fft.cc:607] Unable to register cuFFT factory: Attempting to register factory for plugin cuFFT when one has already been registered
+2025-08-12 09:54:09.901690: E external/local_xla/xla/stream_executor/cuda/cuda_blas.cc:1515] Unable to register cuBLAS factory: Attempting to register factory for plugin cuBLAS when one has already been registered
+2025-08-12 09:54:09.906919: I tensorflow/core/platform/cpu_feature_guard.cc:182] This TensorFlow binary is optimized to use available CPU instructions in performance-critical operations.
+To enable the following instructions: SSE4.1 SSE4.2 AVX AVX2 FMA, in other operations, rebuild TensorFlow with the appropriate compiler flags.
+2025-08-12 09:54:20.102700: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1929] Created device /job:localhost/replica:0/task:0/device:GPU:0 with 79077 MB memory:  -> device: 0, name: NVIDIA A100-SXM4-80GB, pci bus id: 0000:01:00.0, compute capability: 8.0
+2025-08-12 09:54:21.336691: I external/local_xla/xla/stream_executor/cuda/cuda_dnn.cc:454] Loaded cuDNN version 8907
+2025-08-12 09:54:22.082800: I external/local_xla/xla/service/service.cc:168] XLA service 0x1534ad414ca0 initialized for platform CUDA (this does not guarantee that XLA will be used). Devices:
+2025-08-12 09:54:22.082854: I external/local_xla/xla/service/service.cc:176]   StreamExecutor device (0): NVIDIA A100-SXM4-80GB, Compute Capability 8.0
+2025-08-12 09:54:22.087727: I tensorflow/compiler/mlir/tensorflow/utils/dump_mlir_util.cc:269] disabling MLIR crash reproducer, set env var `MLIR_CRASH_REPRODUCER_DIRECTORY` to enable.
+WARNING: All log messages before absl::InitializeLog() is called are written to STDERR
+I0000 00:00:1755006862.167485   69116 device_compiler.h:186] Compiled cluster using XLA!  This line is logged at most once for the lifetime of the process.
+/home/vianajr/cluster_ages_1/1_single_case/batch_runs/single_case_1im_Copy_B.py:414: RuntimeWarning: More than 20 figures have been opened. Figures created through the pyplot interface (`matplotlib.pyplot.figure`) are retained until explicitly closed and may consume too much memory. (To control this warning, see the rcParam `figure.max_open_warning`). Consider using `matplotlib.pyplot.close()`.
+  plt.figure(figsize=(6, 6))
+
+
+--------------------------------------
+SINGLE -------------------------------
+1-im case ----------------------------
+
+Params:
+
+flag_remove_extremes:  False
+flag_use_augmented:  False
+
+flag_black:  True
+
+flag_black_inner:  False
+R:  6
+
+Normalization by
+single-image
+
+arr_learn_rates:  [1e-06]
+arr_epochs:  [200]
+batch_size:  32
+patience:  30
+
+--------------------------------------
+
+
+X.shape:  (8651, 112, 112)
+
+Shape of X_tr: (6055, 112, 112)
+Shape of X_vl: (1298, 112, 112)
+Shape of X_ts: (1298, 112, 112)
+
+Shape of Y_tr: (6055,)
+Shape of Y_vl: (1298,)
+Shape of Y_ts: (1298,)
+
+Shape of use_X_tr: (6055, 112, 112)
+Shape of use_X_vl: (1298, 112, 112)
+Shape of use_X_ts: (1298, 112, 112)
+
+Shape of use_Y_tr: (6055,)
+Shape of use_Y_vl: (1298,)
+Shape of use_Y_ts: (1298,)
+
+nrm_X_tr.shape
+(6055, 112, 112)
+
+nrm_X_tr.shape
+(6055, 112, 112)
+
+
+MODEL 0
+
+Training Finished
+
+Tr. Final MSE (nrm. units): 0.03595469519495964
+Vl. Final MSE (nrm. units): 0.035166796296834946
+Ts. Final MSE (nrm. units): 0.0348481647670269
+Tr. Final MdAE (dnrm. units): 0.7761705017089844
+Vl. Final MdAE (dnrm. units): 0.7680194354057311
+Ts. Final MdAE (dnrm. units): 0.778238730430603
+
+MODEL 1
+
+Training Finished
+
+Tr. Final MSE (nrm. units): 0.03606359288096428
+Vl. Final MSE (nrm. units): 0.03484831005334854
+Ts. Final MSE (nrm. units): 0.03483418747782707
+Tr. Final MdAE (dnrm. units): 0.7868327856063843
+Vl. Final MdAE (dnrm. units): 0.7431431412696838
+Ts. Final MdAE (dnrm. units): 0.7826870918273926
+
+MODEL 2
+
+Training Finished
+
+Tr. Final MSE (nrm. units): 0.035732582211494446
+Vl. Final MSE (nrm. units): 0.03465515002608299
+Ts. Final MSE (nrm. units): 0.03438961133360863
+Tr. Final MdAE (dnrm. units): 0.7784035634994507
+Vl. Final MdAE (dnrm. units): 0.7555489611625671
+Ts. Final MdAE (dnrm. units): 0.7783502769470215
+
+MODEL 3
+
+Training Finished
+
+Tr. Final MSE (nrm. units): 0.03610987961292267
+Vl. Final MSE (nrm. units): 0.034615397453308105
+Ts. Final MSE (nrm. units): 0.03471849486231804
+Tr. Final MdAE (dnrm. units): 0.7946858024597168
+Vl. Final MdAE (dnrm. units): 0.7525908470153808
+Ts. Final MdAE (dnrm. units): 0.7933277058601379
+
+MODEL 4
+
+Training Finished
+
+Tr. Final MSE (nrm. units): 0.036427076905965805
+Vl. Final MSE (nrm. units): 0.03502315655350685
+Ts. Final MSE (nrm. units): 0.035251278430223465
+Tr. Final MdAE (dnrm. units): 0.8060180759429931
+Vl. Final MdAE (dnrm. units): 0.780910518169403
+Ts. Final MdAE (dnrm. units): 0.7882857322692871
